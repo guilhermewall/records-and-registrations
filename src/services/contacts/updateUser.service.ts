@@ -21,9 +21,22 @@ const updatedContactService = async (userId: string, data: any) => {
   if (!contact) {
     throw new AppError("contact not found", 401);
   }
+  console.log("((((((((((((((((((", contact);
 
   if (contact.user.id !== user!.id) {
     throw new AppError("you do not have permission to modify", 403);
+  }
+
+  if (data.telephone == "") {
+    data.telephone = contact.telephone;
+  }
+
+  if (data.name == "") {
+    data.name = contact.name;
+  }
+
+  if (data.email == "") {
+    data.email = contact.email;
   }
 
   const updatedContact = contactRepo.create({

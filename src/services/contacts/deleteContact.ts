@@ -15,11 +15,11 @@ const deleteContactService = async (userId: any, emailContact: any) => {
     .getOne();
 
   if (!contact) {
-    throw new AppError("You are nowt contact", 409);
+    throw new AppError("You are not contact", 409);
   }
 
   if (!contact.isActive) {
-    throw new AppError("You are not contaceet", 409);
+    throw new AppError("You are not contact", 409);
   }
 
   contact.isActive = false;
